@@ -1,0 +1,42 @@
+.logo{
+    
+        background-image :linear-gradient(to right , rgba(3, 4, 12, 0.5),rgba(45, 10, 100, 0.5)),
+        url("https://media1.thehungryjpeg.com/thumbs2/ori_3656459_nli9k6k7h1zss3af8ghdh6vmstah19owkx271hsd_monogram-cs-logo-design.jpg");
+        background-position: center center;
+        background-repeat:  no-repeat;
+        background-size: cover;
+     
+        height: 15vh;
+        width: 15vh;
+        overflow: hidden;
+        margin-top: 100px;
+        margin-left: 45%;
+}
+
+.box{
+    
+    margin-top: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.bold{
+    font-style: oblique;
+    font-size: large;
+}
+
+.title{
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 30px;
+    margin-left: 33%;
+}
+
+.to{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    margin-top: 30px;
+    margin-left: 40%;
+    
+}

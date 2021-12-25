@@ -1,0 +1,50 @@
+ .navbar{
+  
+  background : rgb(68, 92, 177) !important;
+  position : fixed !important;
+  width:100% !important;
+  
+  
+  }
+.card{
+  border:none !important;
+  margin-top : 30px !important;
+  border-radius: 10px !important;
+}
+  .py-5{
+    background:#36393f !important;  
+   
+
+  }
+  .card-header{
+    background :black !important;
+  }
+  .card-body{
+  
+    background :0.5px rgb(32, 31, 31) !important;
+    color :#ccc !important;
+    padding : 40px !important;
+    
+    
+  }
+
+.form-control{
+  border :none !important;
+  color : rgb(153, 153, 153) !important;
+  background:rgba(0,0,0,0.1)!important;
+}
+.form-control:focus{
+  border : 1.5px #7289DA solid !important;
+  background:rgba(0,0,0,0.1) !important;
+}
+.btn-block{
+  background : #7289DA !important;
+  padding :12px !important;
+}
+.test{
+  padding :30px;
+}
+#main-footer{
+  background :rgb(68, 92, 177) !important;
+  padding : 20px !important;
+}

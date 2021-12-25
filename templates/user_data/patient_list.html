@@ -1,0 +1,201 @@
+{% extends 'pages/index.html' %}
+{% block content %}
+{% load static %}
+
+
+ <!-- Vendor JS Files -->
+  <script src="{%static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{%static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  {% comment %} <script src="{%static 'assets/vendor/purecounter/purecounter.js' %}"></script> {% endcomment %}
+  <script src="{%static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  {% comment %} <script src="{%static 'assets/vendor/typed.js/typed.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>  {% endcomment %}
+
+  <!-- Template Main JS File -->
+  <script src="{%static 'assets/js/main.js' %}"></script>
+
+ <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{%static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{%static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <style>
+.wrapper{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: black;
+    max-width: 550px;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+.wrapper .input {
+    width: 85%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.searchbtn {
+  background: #ef6603;
+  width: 10%;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.searchbtn .fas{
+position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+}
+
+
+#ptable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#ptable td, #ptable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#ptable tr:nth-child(even){background-color: #f2f2f2;}
+
+#ptable tr:hover {background-color: #ddd;}
+
+#ptable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #ef6603;
+  color: white;
+}
+
+.searchname{
+  margin-left: 500px;
+}
+
+.note{
+  margin-left: 450px;
+}
+
+</style>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent " style="background-color: #6c757d;">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1><a href="{% url 'index' %}">COVI-SCAN</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+       {%include 'partials/_navbar.html'%}
+     
+    </div>
+  </header><!-- End Header -->
+
+<!-- ======= Patien list Section ======= -->
+<section id="search" class="search">
+  <div class="container">
+    <div class="section-title" data-aos="zoom-out">
+          <h2 style="margin-top:75px;">Search</h2>
+          <p>Search for Patient document</p>
+        </div>
+  
+    
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            
+            <p></p>
+            <p></p>
+            <p></p>
+              <div class="card-body"> 
+
+              <form action="{% url 'patient_list' %}" method="POST" >
+                {% csrf_token %}
+                <div class="form-group">
+                <input type="search" class="form-control" 
+                placeholder="Enter Patient Name" name="searched" required></div>
+                <div id="form-button">
+                <button class ="btn btn-secondary btn-block">Search</button>
+                </div>
+                
+                </div> 
+               
+            
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+<section>
+
+{% if searched %}
+      <h4 class="searchname">You Searched For {{ searched }}</h4>
+      <br>
+      
+  <table id="ptable">
+  <tr>
+    <th>Patient_Ref_id </th>
+    <th>Patient_Name </th>
+    <th>Patient_Mobile </th>
+    <th>Patient_Email </th>
+    <th>Patient_Address </th>
+    <th>Patient_Aadharnumber </th>
+    <th>Patient_Status </th>
+    <th>Patient_Severity </th>
+    <th>Patient_Result </th>
+  </tr>
+  {% for record in record_list %}
+  <tr>
+    <td>{{record.Patient_Ref_id}}</td>
+    <td>{{record.Patient_Name}}</td>
+    <td>{{record.Patient_Mobile}}</td>
+    <td>{{record.Patient_Email}}</td>
+    <td>{{record.Patient_Address}}</td>
+    <td>{{record.Patient_Aadharnumber}}</td>
+    <td>{{record.Patient_Status}}</td>
+    <td>{{record.Patient_Severity}}</td>
+    <td>{{record.Patient_Result}}</td>
+  </tr>
+ {% endfor %}
+      
+</table>
+
+
+
+
+{% else %}
+       <h1></h1>
+
+{% endif %}
+
+</section>
+<!-- End of Patien list Section -->
+{% endblock %}

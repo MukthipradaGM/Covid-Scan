@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+
+  body{
+    background-color: rgb(27, 27, 24);
+    color:grey;
+ 
+  }
+  .navbar{
+   
+   background-color: rgb(95, 115, 187) !important;
+   
+   position : fixed !important;
+   width:100% !important;
+ }
+ .alien{
+   position: relative;
+   left:-16px;
+ }
+ .flex-center{
+  
+   display: flex;
+   justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ 
+ }
+ .form-wrapper{
+   background-color: rgb(39, 39, 39);
+   padding:50px;
+   border-radius: 11px;
+   box-shadow:  inset 0 5px 25px rgba(160, 236, 255, 0.514);
+   
+ }
+ .form-group{
+   padding: 10px;
+ }
+
+ .form-control{
+   
+  border :none !important;
+  color : rgb(153, 153, 153) !important;
+  background:rgba(0,0,0,0.1)!important;
+
+  
+  
+ }
+.form-control:focus{
+  border : 1.5px #7289DA solid !important;
+  background:rgba(0,0,0,0.1) !important;
+}
+@media (min-width: 576px){
+.col-sm-5 {
+    flex: 0 0 41.66667%;
+     max-width: 100%;
+}
+}
+
+.box{
+  margin-top:28px;
+  
+}
+.box select {
+  background-color: #0563af;
+  color: white;
+  padding: 12px;
+  width: 290px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(31, 184, 255, 0.514);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+.msg{
+  margin-top: 15px;
+  
+
+}
+textarea{
+  height : 150px !important;
+ margin-top: -10px !important;
+}
+
+
+
+.box select option {
+  padding: 30px;
+}
+
+select:hover{
+  cursor: pointer !important;
+}
+.hack{
+  position: relative;
+  left:-13px;
+  background-color: rgb(83, 93, 179);
+}
+#main-footer{
+  background: rgb(79, 86, 150) !important;
+  padding: 15px !important;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}

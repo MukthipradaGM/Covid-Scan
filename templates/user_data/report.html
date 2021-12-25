@@ -1,0 +1,119 @@
+{% extends 'pages/index.html' %}
+{% block content %}
+{% load static %}
+
+
+ <!-- Vendor JS Files -->
+  <script src="{%static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{%static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <script src="{%static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  
+
+  <!-- Template Main JS File -->
+  <script src="{%static 'assets/js/main.js' %}"></script>
+
+ <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{%static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{%static 'assets/css/style.css' %}" rel="stylesheet">
+  <link href="{%static 'css/patient_search.css' %}" rel="stylesheet">
+
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent " style="background-color: #6c757d;">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1><a href="{% url 'index' %}">COVI-SCAN</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+       {%include 'partials/_navbar.html'%}
+     
+    </div>
+  </header><!-- End Header -->
+
+<!-- ======= Patien list Section ======= -->
+<section id="search" class="search">
+  <div class="container">
+    <div class="section-title" data-aos="zoom-out">
+          <h2 style="margin-top:75px;">DOWNLOAD</h2>
+          <p>Download Report</p>
+        </div>
+  
+    
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            
+            <p></p>
+            <p></p>
+            <p></p>
+              <div class="card-body"> 
+
+              <form action="{% url 'generate_report' %}" method="POST" target="_blank">
+                {% csrf_token %}
+                <div class="form-group">
+                <input type="search" class="form-control" 
+                placeholder="Enter Patient Reference id" name="searched" required></div>
+                <div id="form-button">
+                <button class ="btn btn-secondary btn-block">Search</button></form>
+                </div>
+                
+                </div> 
+               
+            
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+<section>
+
+{% if searched %}
+      <h4 class="searchname" style="margin-left:35%;">You Searched For {{ searched }}</h4>
+      <br>
+      <div class="result" style="margin-left:40%;">
+      {% for record in record_list %}
+      <li>Patient_Ref_id: {{record.Patient_Ref_id}}</li>
+      <li>Patient_Name: {{record.Patient_Name}}</li>
+      <li>Patient_Mobile: {{record.Patient_Mobile}}</li>
+      <li>Patient_Email: {{record.Patient_Email}}</li>
+      <li>Patient_Address: {{record.Patient_Address}}</li>
+      <li>Patient_Aadharnumber: {{record.Patient_Aadharnumber}}</li>
+      <li>Patient_Status: {{record.Patient_Status}}</li>
+      <li>Patient_Severity: {{record.Patient_Severity}}</li>
+      <li>Patient_Result: {{record.Patient_Result}}</li> 
+      
+      <form action="{% url 'download_report' %}" method="POST" >
+      {% csrf_token %}
+      <div id="form-button">
+                
+                <button class ="btn btn-secondary btn-block" name="ref_id" value = {{record.Patient_Ref_id}}>Download</button> </form>
+      </div> 
+      
+      {% empty %}
+       <h4 class="searchname">Result Not found for this {{ searched }}</h4>
+      {% endfor %}
+      </div>
+{% else %}
+       <h1></h1>
+
+{% endif %}
+
+</section>
+{% endblock %}

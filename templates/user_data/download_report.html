@@ -1,0 +1,77 @@
+{% block content %}
+{% load static %}
+<html>
+<title>Scan Report</title>
+<head>
+{% comment %} <link href="{%static 'css/new_report.css' %}" rel="stylesheet"> {% endcomment %}
+<style type ="text/css">
+.logo{
+    
+        background-image :linear-gradient(to right , rgba(3, 4, 12, 0.5),rgba(45, 10, 100, 0.5)),
+        url("https://media1.thehungryjpeg.com/thumbs2/ori_3656459_nli9k6k7h1zss3af8ghdh6vmstah19owkx271hsd_monogram-cs-logo-design.jpg");
+        background-position: center center;
+        background-repeat:  no-repeat;
+        background-size: cover;
+     
+        height: 15vh;
+        width: 15vh;
+        overflow: hidden;
+        margin-top: 100px;
+        margin-left: 45%;
+}
+
+.box{
+    
+    margin-top: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.bold{
+    font-style: oblique;
+    font-size: large;
+}
+
+.title{
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 30px;
+    margin-left: 37%;
+}
+
+.to{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    margin-top: 30px;
+    margin-left: 43%;
+    
+}
+</style>
+</head>
+<body>
+ {% comment %} <div class="logo">
+   
+</div> {% endcomment %}
+
+ <div class="logo">
+     {% comment %} <img src="https://media1.thehungryjpeg.com/thumbs2/ori_3656459_nli9k6k7h1zss3af8ghdh6vmstah19owkx271hsd_monogram-cs-logo-design.jpg" height=100 width=100 margin-top=100 margin-left=45 >  {% endcomment %}
+</div>
+
+<div class="title">
+    <p> COVI-SCAN COVID-19 Prediction System Report</p>
+</div>
+
+<div class="to">
+    <p><u>To Whomsoever it May Concern</u></p>
+</div>
+{% for record in record_list %}
+<div class="box">
+    <p>Mr/Ms/Mrs.<b>{{record.Patient_Name}}</b>,<b> {{record.Patient_Age}}</b>, aged <b>{{record.Patient_Gender}}</b> years, Patient ID <b>{{Patient_Ref_id}}</b> and tested for COVID-19 through cheast X-ray image at COVI-SCAN, is declared <b>{{record.Patient_Result}}</b> with a seviority of <b>{{record.Patient_Severity}}</b> by the lab on <b>{{record.Scan_time}}</b>
+
+    <p>(This is digitally generated report and does not require physical signatures. You can verify result using Patient ID)</p> 
+{% endfor %}
+</div>
+</body>
+</html>
+{% endblock %}

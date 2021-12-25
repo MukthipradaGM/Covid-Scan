@@ -1,0 +1,196 @@
+  <!-- =======================================================
+  * Template Name: Selecao - v4.3.0
+  * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+{% block content %}
+{%load static%}
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Covi-Scan</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  
+  <link href="{%static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{%static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="{%static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{%static 'assets/css/style.css' %}" rel="stylesheet">
+  {% comment %} <link rel="stylesheet" href="login.css"> {% endcomment %}
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent " style="background-color: #6c757d;">
+    <div class="container d-flex align-items-center justify-content-between" >
+
+      <div class="logo">
+        <h1><a href="{% url 'index' %}">COVI-SCAN</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+       {%include 'partials/_navbar.html'%}
+     
+    </div>
+  </header><!-- End Header -->
+
+    <!-- upload Section -->
+    <section id="upload" class="upload">
+      <div class="container">
+
+        <div class="section-title" data-aos="zoom-out">
+          <h2 style="margin-top:35px;">Upload</h2>
+          <p>Upload new patients details and X-ray image</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card">
+              
+              <div class="card-body">
+                  <!--Alerts-->
+                  <!--{% include 'partials/_alerts.html' %}-->
+                  <form action="" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label for="Patient_Name">Name</label>
+                    <input type="text" name="Patient_Name" class="form-control" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="Patient_Age">Age</label>
+                    <input type="text" name="Patient_Age" class="form-control" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Patient_Gender">Gender</label>
+                    <select  name="Patient_Gender" class="form-control" required>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Other">Other</option>
+                    </select>
+                  </div> 
+
+                  <div class="form-group">
+                    <label for="Patient_Mobile">Contact Number</label>
+                    <input type="text" name="Patient_Mobile" class="form-control" required id="txtnumber" onblur="NumberValidate();" />
+                    <script type="text/javascript">
+                        function NumberValidate() {
+                          var number = document.getElementById("txtnumber").value;
+                          var indianumber = /^+91(7\d|8\d|9\d)\d{9}$/;
+                          if (number != '') {
+                              if (number.match(indianumber)) {
+                                  return true;
+                              }
+                              else {
+                                  alert("Enter valid Contact Number");
+                                  return false;
+                              }
+                          }
+                        }
+                    </script>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="Patient_Email">Email</label>
+                    <input type="email" name="Patient_Email" class="form-control" required>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="Patient_Address">Address</label>
+                    <input type="text" name="Patient_Address" class="form-control" required>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="Patient_Aadharnumber">Aadharnumber</label>
+                    <input type="text" name="Patient_Aadharnumber" class="form-control" required id="txtAadhar" onblur="AadharValidate();" />
+                        <script type="text/javascript">
+                            function AadharValidate() {
+                                var aadhar = document.getElementById("txtAadhar").value;
+                                var adharcardTwelveDigit = /^\d{12}$/;
+                                var adharSixteenDigit = /^\d{16}$/;
+                                if (aadhar != '') {
+                                    if (aadhar.match(adharcardTwelveDigit)) {
+                                        return true;
+                                    }
+                                    else if (aadhar.match(adharSixteenDigit)) {
+                                        return true;
+                                    }
+                                    else {
+                                        alert("Enter valid Aadhar Number");
+                                        return false;
+                                    }
+                                }
+                            }
+                        </script>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="x_rayimage">X-Ray Image</label>
+                    <input type="file" name="x_rayimage" class="form-control" required>
+                  </div>
+
+                  <div id="form-button">
+                    <button type="submit" value="Save" class="btn btn-secondary btn-block">Save</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+      </div>
+    </section>
+    <!-- End upload Section -->
+   
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{%static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{%static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{%static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{%static 'assets/js/main.js' %}"></script>
+
+</body>
+{% endblock %}

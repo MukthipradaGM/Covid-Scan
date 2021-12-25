@@ -1,0 +1,28 @@
+{%load static%}
+
+<nav id="navbar" class="navbar" >
+        <ul>
+         <li><a href="{% url 'index' %}" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+        
+        {% if user.is_authenticated %}
+
+        <li><a href="{% url 'addnew' %}" class="nav-link scrollto"><i class="bx bx-scan"></i><span>Start Scan</span></a></li>
+        <li><a href="{% url 'patient_list' %}" class="nav-link scrollto"><i class="bx bx-list-ul"></i> <span>Patient List</span></a></li>
+        <li><a href="{% url 'generate_report' %}" class="nav-link scrollto"><i class="bx bx-add-to-queue"></i><span>Report</span></a></li>
+        
+        <li><a href="javascript:{document.getElementById('logout').submit()}" class="nav-link scrollto"><i class="bx bx-log-out"></i><span>Log Out</span></a>
+        <form action="{% url 'logout' %}" method="POST" id="logout">
+        {% csrf_token %}
+        <input type="hidden">
+        </form>
+
+        </li>
+        {% else %}
+
+        {% comment %} <li><a href="{% url 'register' %}" class="nav-link scrollto"><i class="bx bx-receipt"></i> <span>Register</span></a></li> {% endcomment %}
+        <li><a href="{% url 'login' %}" class="nav-link scrollto"><i class="bx bx-log-in"></i> <span>Login</span></a></li>
+
+        {% endif %}
+      </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->

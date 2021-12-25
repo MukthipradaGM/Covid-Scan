@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+    .leadbg{
+        color : black;
+        background-image :linear-gradient(to right , rgba(3, 4, 12, 0.5),rgba(45, 10, 100, 0.5)),
+        url("https://www.paho.org/sites/default/files/styles/flexslider_full/public/2020-03/blue-covid-banner.jpg?h=96546727&itok=xDLAoRJF");
+        background-position: center center;
+        background-repeat:  no-repeat;
+        background-size: cover;
+     
+        height: 100vh;
+        overflow: hidden;
+        margin:0px;
+    }
+    .navbar{
+
+        background : rgb(0, 0, 0) !important;
+        
+        
+    }
+    .align{
+       width:100%;
+        position: relative;
+        top:280px;
+        left:300px;
+        
+    }
+    .align h4 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 60px;
+        text-transform: uppercase;
+        color: aqua;
+       
+
+        
+    }
+    .align p{
+        font-size: 20px;
+        color : rgb(10, 111, 136) !important;
+
+    }
+
+    .align p{
+    
+        color:aqua;
+
+    }
+    #particles-js{
+        background-color:red;
+        
+    }
